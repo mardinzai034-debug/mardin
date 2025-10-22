@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resep Makanan - Bootstrap</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS untuk gambar dan background -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            font-family: 'Arial', sans-serif;
+        }
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .recipe-card { margin-bottom: 20px; }
+        .card-img-top { height: 200px; object-fit: cover; }
+    </style>
+</head>
+<body>
+    <!-- Layout: Navbar dengan Dropdown (Komponen) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">Resep Makanan</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Beranda</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            Kategori
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#categories">Makanan Utama</a></li>
+                            <li><a class="dropdown-item" href="#categories">Makanan Penutup</a></li>
+                            <li><a class="dropdown-item" href="#categories">Minuman</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#recipes">Resep</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section dengan Carousel (Komponen) dan Background -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://img.qraved.co/v2/image/data/2016/09/22/Ayam_Betutu_Khas_Bali_2_1474542488119-x.jpg" class="d-block w-100" alt="Resep Lezat" style="height: 400px; object-fit: cover;">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Selamat Datang di Website Resep Makanan</h5>
+                            <p>Temukan resep lezat untuk hidangan favorit Anda!</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Makanan Sehat" style="height: 400px; object-fit: cover;">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Makanan Sehat dan Bergizi</h5>
+                            <p>Jaga kesehatan dengan resep alami.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form: Pencarian Resep -->
+    <section class="container my-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h2>Cari Resep</h2>
+                <form id="searchForm">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="searchInput" placeholder="Masukkan nama resep (contoh: Nasi Goreng)">
+                        <button class="btn btn-primary" type="submit">Cari</button>
+                    </div>
+                </form>
+                <!-- Alert untuk hasil pencarian (Komponen) -->
+                <div id="searchAlert" class="alert alert-info" style="display: none;" role="alert">
+                    Tidak ada resep ditemukan. Coba kata kunci lain!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contents: Kategori Resep -->
+    <section id="categories" class="container my-5">
+        <h2>Kategori Resep</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://nibble-images.b-cdn.net/nibble/original_images/resep_nasi_goreng_jawa_07_535176151c.jpeg?class=large" class="card-img-top" alt="Makanan Utama">
+                    <div class="card-body">
+                        <h5 class="card-title">Makanan Utama</h5>
+                        <p class="card-text">Resep hidangan utama seperti nasi goreng, ayam goreng, dll.</p>
+                        <a href="#recipes" class="btn btn-primary">Lihat Resep</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="Makanan Penutup">
+                    <div class="card-body">
+                        <h5 class="card-title">Makanan Penutup</h5>
+                        <p class="card-text">Resep dessert seperti kue, puding, dan es krim.</p>
+                        <a href="#recipes" class="btn btn-primary">Lihat Resep</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="Minuman">
+                    <div class="card-body">
+                        <h5 class="card-title">Minuman</h5>
+                        <p class="card-text">Resep minuman segar seperti jus dan teh.</p>
+                        <a href="#recipes" class="btn btn-primary">Lihat Resep</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content: Daftar Resep dengan Badge dan Modal (Komponen) -->
+    <section id="recipes" class="container my-5">
+        <h2>Daftar Resep</h2>
+        <div class="row" id="recipeList">
+            <!-- Resep 1 -->
+            <div class="col-md-4 recipe-card">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="Nasi Goreng">
+                    <div class="card-body">
+                        <h5 class="card-title">Nasi Goreng <span class="badge bg-success">Mudah</span></h5>
+                        <p class="card-text">Bahan: Nasi, telur, ayam, sayuran. Cara: Tumis bahan, aduk dengan nasi.</p>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#recipeModal1">Lihat Detail</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Resep 2 -->
+            <div class="col-md-4 recipe-card">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="Ayam Goreng">
+                    <div class="card-body">
+                        <h5 class="card-title">Ayam Goreng <span class="badge bg-warning">Sedang</span></h5>
+                        <p class="card-text">Bahan: Ayam, tepung, bumbu. Cara: Marinasi ayam, goreng hingga matang.</p>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#recipeModal2">Lihat Detail</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Resep 3 -->
+            <div class="col-md-4 recipe-card">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1607478900766-efe13248b125?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="Kue Brownies">
+                    <div class="card-body">
+                        <h5 class="card-title">Kue Brownies <span class="badge bg-danger">Sulit</span></h5>
+                        <p class="card-text">Bahan: Coklat, telur, tepung. Cara: Campur bahan, panggang di oven.</p>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#recipeModal3">Lihat Detail</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Resep 4 -->
+            <div class="col-md-4 recipe-card">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="Salad Caesar">
+                    <div class="card-body">
+                        <h5 class="card-title">Salad Caesar <span class="badge bg-success">Mudah</span></h5>
+                        <p class="card-text">Bahan: Selada, crouton, keju parmesan, dressing. Cara: Campur bahan, sajikan segar.</p>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#recipeModal4">Lihat Detail</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Resep 5 -->
+            <div class="col-md-4 recipe-card">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="Sup Ayam">
+                    <div class="card-body">
+                        <h5 class="card-title">Sup Ayam <span class="badge bg-warning">Sedang</span></h5>
+                        <p class="card-text">Bahan: Ayam, wortel, kentang, bumbu. Cara: Rebus ayam dengan sayuran.</p>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#recipeModal5">Lihat Detail</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Resep 6 -->
+            <div class="col-md-4 recipe-card">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="Pizza Margherita">
+                    <div class="card-body">
+                        <h5 class="card-title">Pizza Margherita <span class="badge bg-danger">Sulit</span></h5>
+                        <p class="card-text">Bahan: Adonan pizza, tomat, mozzarella, basil. Cara: Panggang adonan dengan topping.</p>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#recipeModal6">Lihat Detail</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Resep 7 -->
+            <div class="col-md-4 recipe-card">
+                <div class="card">
+                    <img src="https://gourmandiz.dhnet.be/app/uploads/2019/08/spaghettibolo-4096x2731.jpg" class="card-img-top" alt="Spaghetti Bolognese">
+                    <div class="card-body">
+                        <h5 class="card-title">Spaghetti Bolognese <span class="badge bg-warning">Sedang</span></h5>
+                        <p class="card-text">Bahan: Spaghetti, daging giling, tomat, bawang. Cara: Masak saus, campur dengan pasta.</p>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#recipeModal7">Lihat Detail</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Resep 8 -->
+            <div class="col-md-4 recipe-card">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="Puding Coklat">
+                    <div class="card-body">
+                        <h5 class="card-title">Puding Coklat <span class="badge bg-success">Mudah</span></h5>
+                        <p class="card-text">Bahan: Coklat, susu, agar-agar. Cara: Rebus bahan, dinginkan.</p>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#recipeModal8">Lihat Detail</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Resep 9 -->
+            <div class="col-md-4 recipe-card">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="Jus Jeruk">
+                    <div class="card-body">
+                        <h5 class="card-title">Jus Jeruk <span class="badge bg-success">Mudah</span></h5>
+                        <p class="card-text">Bahan: Jeruk, gula. Cara: Peras jeruk, tambah gula.</p>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#recipeModal9">Lihat Detail</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Resep 10 -->
+            <div class="col-md-4 recipe-card">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="Sate Ayam">
+                    <div class="card-body">
+                        <h5 class="card-title">Sate Ayam <span class="badge bg-warning">Sedang</span></h5>
+                        <p class="card-text">Bahan: Ayam, bumbu kacang, tusuk. Cara: Bakar ayam, sajikan dengan saus.</p>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#recipeModal10">Lihat Detail</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Resep 11 -->
+            <div class="col-md-4 recipe-card">
+                <div class="card">
+                    <img src="https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/grid/original/126414_culinary.jpg" class="card-img-top" alt="Es Krim Vanila">
+                    <div class="card-body">
+                        <h5 class="card-title">Es Krim Vanila <span class="badge bg-danger">Sulit</span></h5>
+                        <p class="card-text">Bahan: Susu, gula, vanila. Cara: Bekukan campuran bahan.</p>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#recipeModal11">Lihat Detail</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Resep 12 -->
+            <div class="col-md-4 recipe-card">
+                <div class="card">
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.dHJ-k_Tn29ks8RzKErafrAHaD-?pid=Api&P=0&h=180" class="card-img-top
